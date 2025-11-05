@@ -18,7 +18,8 @@ export async function createClient() {
               cookieStore.set(name, value, options)
             )
           } catch {
-            // Las cookies no se pueden establecer en una ruta de middleware
+            // Las cookies no pueden ser establecidas en middleware
+            // Se manejarán en el componente
           }
         },
       },

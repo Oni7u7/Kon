@@ -2,50 +2,49 @@ import { createServerClient } from '@supabase/ssr'
 import { NextResponse, type NextRequest } from 'next/server'
 
 export async function middleware(request: NextRequest) {
-  let response = NextResponse.next({
+  let supabaseResponse = NextResponse.next({
     request,
   })
 
-  const supabaseUrl = process.env.NEXT_PUBLIC_SUPABASE_URL
-  const supabaseAnonKey = process.env.NEXT_PUBLIC_SUPABASE_ANON_KEY
-
-  // Si no hay configuración de Supabase, continuar sin procesar
-  if (!supabaseUrl || !supabaseAnonKey) {
-    return response
-  }
-
-  try {
-    const supabase = createServerClient(supabaseUrl, supabaseAnonKey, {
+  const supabase = createServerClient(
+    process.env.NEXT_PUBLIC_SUPABASE_URL!,
+    process.env.NEXT_PUBLIC_SUPABASE_ANON_KEY!,
+    {
       cookies: {
         getAll() {
           return request.cookies.getAll()
         },
         setAll(cookiesToSet) {
-          cookiesToSet.forEach(({ name, value }) => {
+          cookiesToSet.forEach(({ name, value, options }) =>
             request.cookies.set(name, value)
-          })
-          response = NextResponse.next({
+          )
+          supabaseResponse = NextResponse.next({
             request,
           })
-          cookiesToSet.forEach(({ name, value, options }) => {
-            response.cookies.set(name, value, options)
-          })
+          cookiesToSet.forEach(({ name, value, options }) =>
+            supabaseResponse.cookies.set(name, value, options)
+          )
         },
       },
-    })
+    }
+  )
 
-    // Actualizar la sesión si es necesario
-    await supabase.auth.getUser()
-  } catch (error) {
-    // Si hay error, continuar sin procesar
-    console.error('Error en middleware de Supabase:', error)
-  }
+  // Actualizar la sesión del usuario
+  await supabase.auth.getUser()
 
-  return response
+  return supabaseResponse
 }
 
 export const config = {
   matcher: [
+    /*
+     * Coincide con todas las rutas excepto:
+     * - _next/static (archivos estáticos)
+     * - _next/image (optimización de imágenes)
+     * - favicon.ico (favicon)
+     * - archivos públicos
+     */
     '/((?!_next/static|_next/image|favicon.ico|.*\\.(?:svg|png|jpg|jpeg|gif|webp)$).*)',
   ],
 }
+

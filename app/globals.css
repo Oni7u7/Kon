@@ -1,76 +1,33 @@
 @import "tailwindcss";
 
 :root {
-  /* Paleta de colores tierra/marrón */
-  --color-earth-50: #FAF5F2;
-  --color-earth-100: #F3E9E1;
-  --color-earth-200: #E6D0C2;
-  --color-earth-300: #D5B29C;
-  --color-earth-400: #C59077;
-  --color-earth-500: #B77358;
-  --color-earth-600: #A9604D;
-  --color-earth-700: #8D4D41;
-  --color-earth-800: #72413A;
-  --color-earth-900: #5D3631;
-  --color-earth-950: #321B18;
-
-  /* Colores de fondo y texto */
-  --background: var(--color-earth-50);
-  --foreground: var(--color-earth-950);
-  --surface: var(--color-earth-100);
-  --border: var(--color-earth-200);
+  --background: #F5F4F1;
+  --foreground: #2B1F1D;
 }
 
 @theme inline {
   --color-background: var(--background);
   --color-foreground: var(--foreground);
-  --color-surface: var(--surface);
-  --color-border: var(--border);
-  
-  /* Paleta de colores */
-  --color-earth-50: var(--color-earth-50);
-  --color-earth-100: var(--color-earth-100);
-  --color-earth-200: var(--color-earth-200);
-  --color-earth-300: var(--color-earth-300);
-  --color-earth-400: var(--color-earth-400);
-  --color-earth-500: var(--color-earth-500);
-  --color-earth-600: var(--color-earth-600);
-  --color-earth-700: var(--color-earth-700);
-  --color-earth-800: var(--color-earth-800);
-  --color-earth-900: var(--color-earth-900);
-  --color-earth-950: var(--color-earth-950);
-  
   --font-sans: var(--font-geist-sans);
   --font-mono: var(--font-geist-mono);
+  
+  /* Paleta de colores minimalista - Tono beige/café */
+  --color-beige-50: #F5F4F1;
+  --color-beige-100: #E7E2DA;
+  --color-beige-200: #D1C7B7;
+  --color-beige-300: #B6A58E;
+  --color-beige-400: #A1886E;
+  --color-beige-500: #927860;
+  --color-beige-600: #836755;
+  --color-beige-700: #654D43;
+  --color-beige-800: #57423C;
+  --color-beige-900: #4C3B37;
+  --color-beige-950: #2B1F1D;
 }
 
 body {
   background: var(--background);
   color: var(--foreground);
-  font-family: var(--font-geist-sans), Arial, Helvetica, sans-serif;
+  font-family: var(--font-geist-sans), -apple-system, BlinkMacSystemFont, 'Segoe UI', Roboto, sans-serif;
   min-height: 100vh;
-}
-
-/* Estilos para inputs */
-input[type="email"],
-input[type="password"],
-input[type="text"] {
-  transition: border-color 0.2s ease, box-shadow 0.2s ease;
-}
-
-input[type="email"]:focus,
-input[type="password"]:focus,
-input[type="text"]:focus {
-  outline: none;
-  border-color: var(--color-earth-400);
-  box-shadow: 0 0 0 3px rgba(197, 144, 119, 0.1);
-}
-
-/* Estilos para botones */
-button {
-  transition: background-color 0.2s ease, transform 0.1s ease;
-}
-
-button:active:not(:disabled) {
-  transform: scale(0.98);
 }
