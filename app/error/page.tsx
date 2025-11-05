@@ -6,14 +6,14 @@ async function ErrorMessage({ searchParams }: { searchParams: Promise<{ message?
   const message = params.message || 'Ocurrió un error'
 
   return (
-    <div className="min-h-screen bg-beige-50 flex items-center justify-center px-4">
+    <div className="min-h-screen bg-beige-50 flex items-center justify-center px-4 py-8 sm:py-12">
       <div className="max-w-md w-full">
-        <div className="bg-beige-100 rounded-lg p-8 border border-beige-200 shadow-sm text-center">
-          <h1 className="text-3xl font-bold text-beige-950 mb-4">Error</h1>
-          <p className="text-beige-700 mb-6">{message}</p>
+        <div className="bg-beige-100 rounded-lg p-6 sm:p-8 border border-beige-200 shadow-sm text-center">
+          <h1 className="text-2xl sm:text-3xl font-bold text-beige-950 mb-3 sm:mb-4">Error</h1>
+          <p className="text-sm sm:text-base text-beige-700 mb-5 sm:mb-6 break-words">{message}</p>
           <Link
             href="/"
-            className="inline-block px-6 py-2 bg-beige-600 text-beige-50 rounded-md hover:bg-beige-700 transition-colors font-medium"
+            className="inline-block px-4 sm:px-6 py-2.5 sm:py-2 bg-beige-600 text-beige-50 rounded-md hover:bg-beige-700 transition-colors font-medium text-sm sm:text-base"
           >
             Volver al inicio
           </Link>
