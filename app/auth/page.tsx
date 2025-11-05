@@ -83,8 +83,8 @@ export default function AuthPage() {
                 required
                 className="w-full px-4 py-2 border border-border rounded-md bg-background text-foreground focus:outline-none focus:ring-2"
                 style={{
-                  focusRingColor: 'var(--color-earth-400)',
-                }}
+                  '--tw-ring-color': 'var(--color-earth-400)',
+                } as React.CSSProperties}
                 placeholder="tu@correo.com"
               />
             </div>
@@ -106,8 +106,8 @@ export default function AuthPage() {
                 minLength={6}
                 className="w-full px-4 py-2 border border-border rounded-md bg-background text-foreground focus:outline-none focus:ring-2"
                 style={{
-                  focusRingColor: 'var(--color-earth-400)',
-                }}
+                  '--tw-ring-color': 'var(--color-earth-400)',
+                } as React.CSSProperties}
                 placeholder="••••••••"
               />
             </div>
